@@ -3,3 +3,12 @@
 ################################################################################
 
 /Unzone/Unzone/Unzone/bin/Debug/netstandard2.0
+/Unzone/Unzone/Unzone/obj
+/Unzone/Unzone/Unzone.Android/obj
+/Unzone/Unzone/Unzone.iOS/obj
+/Unzone/Unzone/Unzone.UWP/bin/x86/Debug
+/Unzone/Unzone/Unzone.UWP/obj
+/Unzone/.vs/Unzone/v16
+/.vs
+/Unzone/.vs/Unzone
+/Unzone/Unzone/Unzone.Android/bin/Debug

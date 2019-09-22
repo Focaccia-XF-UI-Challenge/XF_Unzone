@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage 
+    x:Class="Unzone.MainPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+    <AbsoluteLayout>
+        <Grid
+            AbsoluteLayout.LayoutBounds="0,0,1,1"
+            AbsoluteLayout.LayoutFlags="All"
+            BackgroundColor="{StaticResource PageBackgroundColor}">
+            <ScrollView>
+                <StackLayout BindableLayout.ItemsSource="{Binding Locations}">
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate>
+                            <Grid BackgroundColor="{StaticResource CellBackgroundColor}">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <BoxView
+                                    Margin="10"
+                                    BackgroundColor="Orange"
+                                    HeightRequest="50"
+                                    HorizontalOptions="Center"
+                                    VerticalOptions="Center"
+                                    WidthRequest="50" />
+                                <StackLayout Grid.Column="1" VerticalOptions="Center">
+                                    <Label
+                                        FontSize="20"
+                                        Text="{Binding UserName}"
+                                        TextColor="White" />
+                                    <Label
+                                        FontSize="20"
+                                        Text="{Binding Location}"
+                                        TextColor="White" />
+                                </StackLayout>
+                                <StackLayout Grid.Column="2" VerticalOptions="Center">
+                                    <Label
+                                        Margin="10"
+                                        FontSize="15"
+                                        Text="{Binding CurrentTime}"
+                                        TextColor="White" />
+                                </StackLayout>
+                            </Grid>
+
+                        </DataTemplate>
+                    </BindableLayout.ItemTemplate>
+                </StackLayout>
+            </ScrollView>
+        </Grid>
+    </AbsoluteLayout>
+</ContentPage>
