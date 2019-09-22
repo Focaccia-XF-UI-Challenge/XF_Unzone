@@ -2,4 +2,7 @@
 跟著KymPhillpotts大大一起作Unzone這個UI
 
 加入的套件
-[⚙]DebugRainbow
+
+[⚙]Refractored.MvvmHelpers
+
+[⚙]Xamarin.Forms.DebugRainbows
