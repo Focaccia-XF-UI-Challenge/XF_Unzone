@@ -18,9 +18,11 @@ namespace Unzone
         public MainPage()
         {
             InitializeComponent();
+#if DEBUG
+            //Xamarin.Forms.DebugRainbows.DebugRainbow.SetIsDebug(this, true);
+#else
 
-            Xamarin.Forms.DebugRainbows.DebugRainbow.SetIsDebug(this, true);
-
+#endif
             this.BindingContext = new MainViewModel();
         }
     }

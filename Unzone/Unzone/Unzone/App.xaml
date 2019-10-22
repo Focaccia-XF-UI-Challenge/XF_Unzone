@@ -5,19 +5,20 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d"
-    xmlns:rainbows="clr-namespace:Xamarin.Forms.DebugRainbows;assembly=Xamarin.Forms.DebugRainbows">
+    mc:Ignorable="d">
     <Application.Resources>
-        <ResourceDictionary>
-            <Style TargetType="ContentPage" ApplyToDerivedTypes="True">
-                <Setter Property="rainbows:DebugRainbow.IsDebug" Value="True" />
-            </Style>
-        </ResourceDictionary>
-        
         <Color x:Key="DropDownColor2">#36476a</Color>
         <Color x:Key="DropDownColor1">#41557e</Color>
         <Color x:Key="NavigationBarColor">#F5785B</Color>
         <Color x:Key="PageBackgroundColor">#40557D</Color>
         <Color x:Key="CellBackgroundColor">#35476A</Color>
+        <Style x:Key="MainPage_Timmer" TargetType="Label">
+            <Setter Property="FontSize" Value="Large" />
+            <Setter Property="TextColor" Value="White" />
+        </Style>
+        <Style x:Key="MainPage_Label" TargetType="Label">
+            <Setter Property="FontSize" Value="20" />
+            <Setter Property="TextColor" Value="White" />
+        </Style>
     </Application.Resources>
 </Application>

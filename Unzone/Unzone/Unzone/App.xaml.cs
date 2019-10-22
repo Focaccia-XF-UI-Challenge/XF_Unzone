@@ -10,9 +10,9 @@ namespace Unzone
         {
             InitializeComponent();
 
-//#if DEBUG
-//            EnableDebugRainbows(true);
-//#endif
+#if DEBUG
+            //EnableDebugRainbows(true);
+#endif
 
             MainPage = new MainPage();
         }
@@ -32,6 +32,10 @@ namespace Unzone
             // Handle when your app resumes
         }
 
+        /// <summary>
+        /// 開啟 DebugRainbows必須要加入的方法
+        /// </summary>
+        /// <param name="shouldUseDebugRainbows"></param>
         void EnableDebugRainbows(bool shouldUseDebugRainbows)
         {
             Resources.Add(new Style(typeof(ContentPage))

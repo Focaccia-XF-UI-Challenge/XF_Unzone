@@ -12,3 +12,5 @@
 /.vs
 /Unzone/.vs/Unzone
 /Unzone/Unzone/Unzone.Android/bin/Debug
+/Unzone/Unzone/Unzone/bin/Release/netstandard2.0
+/Unzone/Unzone/Unzone.UWP/bin/x86/Release

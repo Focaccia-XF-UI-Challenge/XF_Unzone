@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentView
+    x:Class="Unzone.Content.TimeCell"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+    <ContentView.Content>
+        <!--  可以把基本畫面搬出來(這是一個ContentPages內容頁面)  -->
+        <Grid BackgroundColor="{StaticResource CellBackgroundColor}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <BoxView
+                Margin="10"
+                BackgroundColor="Orange"
+                HeightRequest="50"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                WidthRequest="50" />
+            <StackLayout Grid.Column="1" VerticalOptions="Center">
+                <Label Style="{StaticResource MainPage_Label}" Text="{Binding UserName}" />
+                <Label Style="{StaticResource MainPage_Label}" Text="{Binding Location}" />
+            </StackLayout>
+            <StackLayout Grid.Column="2" VerticalOptions="Center">
+                <Label
+                    Margin="10"
+                    Style="{StaticResource MainPage_Timmer}"
+                    Text="{Binding CurrentTime}" />
+            </StackLayout>
+            <BoxView
+                Grid.Column="0"
+                Grid.ColumnSpan="3"
+                BackgroundColor="{StaticResource PageBackgroundColor}"
+                HeightRequest="1"
+                VerticalOptions="End" />
+        </Grid>
+
+    </ContentView.Content>
+</ContentView>
