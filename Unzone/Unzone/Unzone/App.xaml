@@ -20,5 +20,9 @@
             <Setter Property="FontSize" Value="20" />
             <Setter Property="TextColor" Value="White" />
         </Style>
+        <Style TargetType="Grid">
+            <Setter Property="ColumnSpacing" Value="0" />
+            <Setter Property="RowSpacing" Value="0" />
+        </Style>
     </Application.Resources>
 </Application>
