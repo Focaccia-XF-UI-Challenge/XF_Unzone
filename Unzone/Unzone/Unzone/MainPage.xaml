@@ -17,7 +17,11 @@
                     <BindableLayout.ItemTemplate>
                         <DataTemplate>
                             <!--  搬出去變成獨立的一頁  -->
-                            <controls:TimeCell />
+                            <controls:TimeCell>
+                                <controls:TimeCell.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="TimeCellGestureRecognizer_Tapped" />
+                                </controls:TimeCell.GestureRecognizers>
+                            </controls:TimeCell>
                         </DataTemplate>
                     </BindableLayout.ItemTemplate>
                 </StackLayout>
@@ -28,7 +32,12 @@
             x:Name="FadeBackground"
             AbsoluteLayout.LayoutBounds="0,0,1,1"
             AbsoluteLayout.LayoutFlags="All"
-            BackgroundColor="#CC000000">
+            BackgroundColor="#CC000000"
+            IsVisible="False"
+            Opacity="0">
+            <AbsoluteLayout.GestureRecognizers>
+                <TapGestureRecognizer Tapped="BackgroundTapGestureRecognizer_Tapped" />
+            </AbsoluteLayout.GestureRecognizers>
             <Grid x:Name="DropDownContainer_Popup" RowSpacing="0">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
@@ -42,7 +51,7 @@
 
                 <controls:TimeCell Grid.ColumnSpan="2" />
                 <Grid
-                    x:Name="DeleteButton"
+                    x:Name="DeleteDropdown"
                     Grid.Row="1"
                     Grid.Column="0"
                     BackgroundColor="{StaticResource DropDownColor1}"
@@ -54,7 +63,7 @@
                         VerticalOptions="Center" />
                 </Grid>
                 <Grid
-                    x:Name="EditButton"
+                    x:Name="EditDropdown"
                     Grid.Row="1"
                     Grid.Column="1"
                     BackgroundColor="{StaticResource DropDownColor2}"
@@ -66,9 +75,9 @@
                         VerticalOptions="Center" />
                 </Grid>
                 <Grid
-                    x:Name="InfoButton"
-                    Grid.Row="0"
-                    Grid.Column="2"
+                    x:Name="InfoDropdown"
+                    Grid.Row="2"
+                    Grid.Column="0"
                     Grid.ColumnSpan="2"
                     BackgroundColor="{StaticResource DropDownColor2}"
                     HeightRequest="60">
