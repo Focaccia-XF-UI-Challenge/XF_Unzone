@@ -7,18 +7,27 @@ namespace Unzone.Models
 {
     public class TimeInfo : ObservableObject
     {
-        private string userName;
+
         private string location;
         private string timeZoneId;
         private string currentTime;
+        private string ampm;
 
+        public string AMPM
+        {
+            get => ampm;
+            set => SetProperty(ref ampm, value);
+        }
+
+
+        private string userName;
         public string UserName
         {
             get => userName;
             set => SetProperty(ref userName, value);
         }
 
-        public string Location  
+        public string Location
         {
             get => location;
             set => SetProperty(ref location, value);

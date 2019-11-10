@@ -12,14 +12,61 @@
         <Color x:Key="NavigationBarColor">#F5785B</Color>
         <Color x:Key="PageBackgroundColor">#40557D</Color>
         <Color x:Key="CellBackgroundColor">#35476A</Color>
+        <Color x:Key="MainTextColor">#FFFFFF</Color>
+        <Color x:Key="LocationTextColor">#818BA1</Color>
+
+
+        <!--  Font Families  -->
+        <OnPlatform x:Key="BoldFont" x:TypeArguments="x:String">
+            <On Platform="Android" Value="OpenSans-Bold.ttf#Open Sans" />
+            <On Platform="UWP" Value="/Assets/OpenSans-Bold.ttf#Open Sans" />
+            <On Platform="iOS" Value="OpenSans-Bold" />
+        </OnPlatform>
+        <OnPlatform x:Key="LightFont" x:TypeArguments="x:String">
+            <On Platform="Android" Value="OpenSans-Light.ttf#Open Sans" />
+            <On Platform="UWP" Value="/Assets/OpenSans-Light.ttf#Open Sans" />
+            <On Platform="iOS" Value="OpenSans-Light" />
+        </OnPlatform>
+        <OnPlatform x:Key="RegularFont" x:TypeArguments="x:String">
+            <On Platform="Android" Value="OpenSans-Regular.ttf#Open Sans" />
+            <On Platform="UWP" Value="/Assets/OpenSans-Regular.ttf#Open Sans" />
+            <On Platform="iOS" Value="OpenSans-Regular" />
+        </OnPlatform>
+
+        <Style x:Key="NameLabelStyle" TargetType="Label">
+            <Setter Property="FontFamily" Value="{StaticResource RegularFont}" />
+            <Setter Property="FontSize" Value="20" />
+            <Setter Property="TextColor" Value="{StaticResource MainTextColor}" />
+        </Style>
+
+        <Style x:Key="TimeLabelStyle" TargetType="Label">
+            <Setter Property="FontFamily" Value="{StaticResource RegularFont}" />
+            <Setter Property="FontSize" Value="30" />
+            <Setter Property="TextColor" Value="{StaticResource MainTextColor}" />
+        </Style>
+
+        <Style x:Key="LocationLabelStyle" TargetType="Label">
+            <Setter Property="FontFamily" Value="{StaticResource RegularFont}" />
+            <Setter Property="FontSize" Value="12" />
+            <Setter Property="TextColor" Value="{StaticResource LocationTextColor}" />
+        </Style>
+
+        <Style x:Key="AmPmLabelStyle" TargetType="Label">
+            <Setter Property="FontFamily" Value="{StaticResource RegularFont}" />
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="TextColor" Value="{StaticResource LocationTextColor}" />
+        </Style>
+
         <Style x:Key="MainPage_Timmer" TargetType="Label">
             <Setter Property="FontSize" Value="Large" />
-            <Setter Property="TextColor" Value="White" />
+            <Setter Property="TextColor" Value="{StaticResource MainTextColor}" />
         </Style>
+
         <Style x:Key="MainPage_Label" TargetType="Label">
             <Setter Property="FontSize" Value="20" />
-            <Setter Property="TextColor" Value="White" />
+            <Setter Property="TextColor" Value="{StaticResource MainTextColor}" />
         </Style>
+
         <Style TargetType="Grid">
             <Setter Property="ColumnSpacing" Value="0" />
             <Setter Property="RowSpacing" Value="0" />

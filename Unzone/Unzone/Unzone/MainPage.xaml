@@ -8,6 +8,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
     <AbsoluteLayout>
+
         <Grid
             AbsoluteLayout.LayoutBounds="0,0,1,1"
             AbsoluteLayout.LayoutFlags="All"
@@ -28,6 +29,7 @@
             </ScrollView>
         </Grid>
 
+        <!--  點開後出現的假背景色反灰  -->
         <AbsoluteLayout
             x:Name="FadeBackground"
             AbsoluteLayout.LayoutBounds="0,0,1,1"
@@ -38,121 +40,135 @@
             <AbsoluteLayout.GestureRecognizers>
                 <TapGestureRecognizer Tapped="BackgroundTapGestureRecognizer_Tapped" />
             </AbsoluteLayout.GestureRecognizers>
+            <!--  點擊某一筆之後跳出的畫面  -->
+            <Grid x:Name="FrontSide" IsVisible="True">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
 
-            <Grid x:Name="DropDownContainer_Popup" RowSpacing="0">
-                <Grid x:Name="FrontSide" IsVisible="True">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="*" />
-                    </Grid.ColumnDefinitions>
+                <controls:TimeCell
+                    x:Name="FakeCell"
+                    Grid.ColumnSpan="2"
+                    HeightRequest="50" />
 
-                    <controls:TimeCell
-                        x:Name="FakeCell"
-                        Grid.ColumnSpan="2"
-                        HeightRequest="80" />
+                <Grid
+                    x:Name="DeleteDropdown"
+                    Grid.Row="1"
+                    Grid.Column="0"
+                    AnchorY="0"
+                    BackgroundColor="{StaticResource DropDownColor1}"
+                    HeightRequest="60">
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="DeleteTapGestureRecognizer_Tapped" />
+                    </Grid.GestureRecognizers>
 
-                    <Grid
-                        x:Name="DeleteDropdown"
-                        Grid.Row="1"
-                        Grid.Column="0"
-                        AnchorY="0"
-                        BackgroundColor="{StaticResource DropDownColor1}"
-                        HeightRequest="60">
-                        <Grid.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="DeleteTapGestureRecognizer_Tapped" />
-                        </Grid.GestureRecognizers>
+                    <StackLayout HorizontalOptions="Center" Orientation="Horizontal">
+                        <Image
+                            HeightRequest="8"
+                            Source="Delete.png"
+                            WidthRequest="8" />
                         <Label
                             HorizontalOptions="Center"
                             Text="Delete"
                             TextColor="White"
                             VerticalOptions="Center" />
-                    </Grid>
-                    <Grid
-                        x:Name="EditDropdown"
-                        Grid.Row="1"
-                        Grid.Column="1"
-                        AnchorY="0"
-                        BackgroundColor="{StaticResource DropDownColor2}"
-                        HeightRequest="60">
+                    </StackLayout>
+
+                </Grid>
+                <Grid
+                    x:Name="EditDropdown"
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    AnchorY="0"
+                    BackgroundColor="{StaticResource DropDownColor2}"
+                    HeightRequest="60">
+                    <StackLayout HorizontalOptions="Center" Orientation="Horizontal">
+                        <Image
+                            HeightRequest="8"
+                            Source="Edit.png"
+                            WidthRequest="8" />
                         <Label
                             HorizontalOptions="Center"
                             Text="Edit"
                             TextColor="White"
                             VerticalOptions="Center" />
-                    </Grid>
-                    <Grid
-                        x:Name="InfoDropdown"
-                        Grid.Row="2"
-                        Grid.Column="0"
-                        Grid.ColumnSpan="2"
-                        AnchorY="0"
-                        BackgroundColor="{StaticResource DropDownColor2}"
-                        HeightRequest="60">
-                        <Label
-                            HorizontalOptions="Center"
-                            Text="TimeZone"
-                            TextColor="White"
-                            VerticalOptions="Center" />
-                    </Grid>
+                    </StackLayout>
                 </Grid>
-                <Grid x:Name="BackSide" IsVisible="False">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="*" />
-                    </Grid.ColumnDefinitions>
+                <Grid
+                    x:Name="InfoDropdown"
+                    Grid.Row="2"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="2"
+                    AnchorY="0"
+                    BackgroundColor="{StaticResource DropDownColor2}"
+                    HeightRequest="80">
+                    <Label
+                        HorizontalOptions="Center"
+                        Text="TimeZone"
+                        TextColor="White"
+                        VerticalOptions="Center" />
+                </Grid>
+            </Grid>
 
-                    <Grid
-                        x:Name="ConfirmMessage"
-                        Grid.ColumnSpan="2"
-                        BackgroundColor="{StaticResource CellBackgroundColor}"
-                        HeightRequest="80">
-                        <Label
-                            HorizontalOptions="Center"
-                            Text="Are You Sure?"
-                            TextColor="White"
-                            VerticalOptions="Center" />
-                    </Grid>
+            <!--  點擊刪除翻轉後的畫面  -->
+            <Grid x:Name="BackSide" IsVisible="False">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
 
-                    <Grid
-                        x:Name="YesButton"
-                        Grid.Row="1"
-                        Grid.Column="0"
-                        AnchorY="0"
-                        BackgroundColor="{StaticResource DropDownColor1}"
-                        HeightRequest="60">
-                        <Label
-                            HorizontalOptions="Center"
-                            Text="Yes"
-                            TextColor="White"
-                            VerticalOptions="Center" />
-                    </Grid>
+                <Grid
+                    x:Name="ConfirmMessage"
+                    Grid.ColumnSpan="2"
+                    BackgroundColor="{StaticResource CellBackgroundColor}"
+                    HeightRequest="80">
+                    <Label
+                        HorizontalOptions="Center"
+                        Text="Are You Sure?"
+                        TextColor="White"
+                        VerticalOptions="Center" />
+                </Grid>
 
-                    <Grid
-                        x:Name="NoButton"
-                        Grid.Row="1"
-                        Grid.Column="1"
-                        AnchorY="0"
-                        BackgroundColor="{StaticResource DropDownColor2}"
-                        HeightRequest="60">
-                        <Grid.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="NoButtonTapGestureRecognizer_Tapped" />
-                        </Grid.GestureRecognizers>
-                        <Label
-                            HorizontalOptions="Center"
-                            Text="No"
-                            TextColor="White"
-                            VerticalOptions="Center" />
-                    </Grid>
+                <Grid
+                    x:Name="YesButton"
+                    Grid.Row="1"
+                    Grid.Column="0"
+                    AnchorY="0"
+                    BackgroundColor="{StaticResource DropDownColor1}"
+                    HeightRequest="60">
+                    <Label
+                        HorizontalOptions="Center"
+                        Text="Yes"
+                        TextColor="White"
+                        VerticalOptions="Center" />
+                </Grid>
+
+                <Grid
+                    x:Name="NoButton"
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    AnchorY="0"
+                    BackgroundColor="{StaticResource DropDownColor2}"
+                    HeightRequest="60">
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="NoButtonTapGestureRecognizer_Tapped" />
+                    </Grid.GestureRecognizers>
+                    <Label
+                        HorizontalOptions="Center"
+                        Text="No"
+                        TextColor="White"
+                        VerticalOptions="Center" />
                 </Grid>
             </Grid>
         </AbsoluteLayout>

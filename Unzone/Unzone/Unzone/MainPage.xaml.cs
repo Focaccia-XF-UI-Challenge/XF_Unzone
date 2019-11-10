@@ -39,22 +39,14 @@ namespace Unzone
             #region 動態定位點到的元件且待出資料
             //取得點到的是哪一筆
             var element = (TimeCell)sender;
-
-            //定位
+            //帶出選到值
             FakeCell.BindingContext = element.BindingContext;
 
-            var dropdownContainerRect = new Rectangle(0,
-                element.Bounds.Top,
-                this.Width,
-                FakeCell.Height + DeleteDropdown.Height + InfoDropdown.Height);
-
-            AbsoluteLayout.SetLayoutBounds(DropDownContainer_Popup, dropdownContainerRect);
+            PositionDropDown(element, FrontSide);
+            PositionDropDown(element, BackSide);
             #endregion
 
-
-
             //先隱藏元件
-
             FrontSide.IsVisible = true;
 
             DeleteDropdown.IsVisible = false;
@@ -67,6 +59,13 @@ namespace Unzone
             await OpenDropDown(InfoDropdown);
 
 
+        }
+
+        private void PositionDropDown(VisualElement parent, VisualElement dropDown)
+        {
+            AbsoluteLayout.SetLayoutFlags(dropDown, AbsoluteLayoutFlags.None);
+            var dropDownContainerRect = new Rectangle(0, parent.Bounds.Top, this.Width, dropDown.Height);
+            AbsoluteLayout.SetLayoutBounds(dropDown, dropDownContainerRect);
         }
 
         private async Task OpenDropDown(View view)
@@ -102,26 +101,42 @@ namespace Unzone
         private async void DeleteTapGestureRecognizer_Tapped(object sender, EventArgs e)
         {
             await CloseDropDown(InfoDropdown);
-
             FakeCell.IsVisible = true;
-
-            await DropDownContainer_Popup.RotateYTo(-90, animationSpeed, Easing.SpringIn);
-            DropDownContainer_Popup.RotationY = 90;
-            BackSide.IsVisible = true;
-            FrontSide.IsVisible = false;
-            await DropDownContainer_Popup.RotateYTo(0, animationSpeed, Easing.SpringIn);
+            //選轉道詢問是否刪除
+            await Flip(FrontSide, BackSide);
+            //await DropDownContainer_Popup.RotateYTo(-90, animationSpeed, Easing.SpringIn);
+            //DropDownContainer_Popup.RotationY = 90;
+            //BackSide.IsVisible = true;
+            //FrontSide.IsVisible = false;
+            //await DropDownContainer_Popup.RotateYTo(0, animationSpeed, Easing.SpringIn);
         }
 
-
+        /// <summary>
+        /// 建立一個選轉的方法
+        /// </summary>
+        /// <param name="from"></param>
+        /// <param name="to"></param>
+        /// <returns></returns>
+        private async Task Flip(VisualElement from, VisualElement to)
+        {
+            await from.RotateYTo(-90, animationSpeed, Easing.SpringIn);
+            to.RotationY = 90;
+            to.IsVisible = true;
+            from.IsVisible = false;
+            await to.RotateYTo(0, animationSpeed, Easing.SpringIn);
+        }
 
         private async void NoButtonTapGestureRecognizer_Tapped(object sender, EventArgs e)
         {
             //把他轉回正面
-            await DropDownContainer_Popup.RotateYTo(-90, animationSpeed, Easing.SpringIn);
-            DropDownContainer_Popup.RotationY = 90;
-            FrontSide.IsVisible = true;
-            BackSide.IsVisible = false;
-            await DropDownContainer_Popup.RotateYTo(0, animationSpeed, Easing.SpringIn);
+            await Flip(BackSide, FrontSide);
+
+            //await DropDownContainer_Popup.RotateYTo(-90, animationSpeed, Easing.SpringIn);
+            //DropDownContainer_Popup.RotationY = 90;
+            //FrontSide.IsVisible = true;
+            //BackSide.IsVisible = false;
+            //await DropDownContainer_Popup.RotateYTo(0, animationSpeed, Easing.SpringIn);
+
             await OpenDropDown(InfoDropdown);
         }
     }

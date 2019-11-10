@@ -14,23 +14,43 @@
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
-            <BoxView
+            <Image
                 Margin="10"
-                BackgroundColor="Orange"
                 HeightRequest="50"
                 HorizontalOptions="Center"
+                Source="Morning.png"
                 VerticalOptions="Center"
                 WidthRequest="50" />
+
             <StackLayout Grid.Column="1" VerticalOptions="Center">
-                <Label Style="{StaticResource MainPage_Label}" Text="{Binding UserName}" />
-                <Label Style="{StaticResource MainPage_Label}" Text="{Binding Location}" />
+                <Label Style="{StaticResource NameLabelStyle}" Text="{Binding UserName}" />
+
+                <StackLayout Margin="0,-5,0,0" Orientation="Horizontal">
+                    <Image
+                        HeightRequest="8"
+                        Source="Location.png"
+                        WidthRequest="8" />
+                    <Label Style="{StaticResource LocationLabelStyle}" Text="{Binding Location}" />
+                </StackLayout>
+
             </StackLayout>
-            <StackLayout Grid.Column="2" VerticalOptions="Center">
+            <StackLayout
+                Grid.Column="2"
+                Margin="0,0,20,0"
+                Orientation="Horizontal">
                 <Label
-                    Margin="10"
-                    Style="{StaticResource MainPage_Timmer}"
-                    Text="{Binding CurrentTime}" />
+                    Style="{StaticResource TimeLabelStyle}"
+                    Text="{Binding CurrentTime}"
+                    VerticalOptions="Center" />
+
+                <Label
+                    Margin="0,-14,0,0"
+                    Style="{StaticResource AmPmLabelStyle}"
+                    Text="{Binding AMPM}"
+                    VerticalOptions="Center" />
             </StackLayout>
+
+
             <BoxView
                 Grid.Column="0"
                 Grid.ColumnSpan="3"
